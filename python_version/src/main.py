@@ -5,6 +5,7 @@ import random
 # private import
 import bfs
 import dfs
+import A_star
 import visualization
 
 if __name__  == "__main__":
@@ -33,11 +34,14 @@ if __name__  == "__main__":
 
     map_1 = np.array(map)
     map_2 = np.array(map)
+    map_3 = np.array(map)
 
     map_1 = dfs.dfs(map_1,s,t)
     map_2 = bfs.bfs(map_2,s,t)
+    map_3 = A_star.A_star(map_3,s,t)
 
     visualization.save_map(map_1,r'python_version\res\dfs_res.pdf')
     visualization.save_map(map_2,r'python_version\res\bfs_res.pdf')
+    visualization.save_map(map_3,r'python_version\res\A_star.pdf')
     
 
