@@ -6,12 +6,17 @@ def dfs(map:np.array,s:tuple,t:tuple):
     visited = [[False for i in range(50)] for i in range(50)]
     visited[s[0]][s[1]] = True
 
+    # return value
+    searched = []
+    path = []
+
     while stack:
         v = stack.pop()
         v_x = v[0]
         v_y = v[1]
         if v != s:
-            map[v_x][v_y] = 3 
+            map[v_x][v_y] = 3
+            searched.append(v)
 
         # suppose the robot can only move in four directions
         # right
@@ -67,8 +72,9 @@ def dfs(map:np.array,s:tuple,t:tuple):
     v = t
     while pre[v[0]][v[1]] != s:
         u = pre[v[0]][v[1]]
+        path.append(u)
         map[u[0]][u[1]] = 4
         v = u
     
-    return map
+    return map, searched, path[::-1]
 

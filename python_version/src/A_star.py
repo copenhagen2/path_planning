@@ -16,6 +16,10 @@ def A_star(map:np.array, s:tuple, t:tuple):
     pre = [[(-1,-1) for i in range(50)] for i in range(50)]
     visited = [[False for i in range(50)] for i in range(50)]
 
+    # return value
+    searched = []
+    path = []
+
     while not q.empty():
         cost, v = q.get()
         x_v = v[0]
@@ -25,6 +29,7 @@ def A_star(map:np.array, s:tuple, t:tuple):
         visited[x_v][y_v] = True
         if v != s:
             map[x_v][y_v] = 3
+            searched.append(v)
 
         # up
         u = (x_v, y_v+1)
@@ -91,7 +96,8 @@ def A_star(map:np.array, s:tuple, t:tuple):
     v = t
     while pre[v[0]][v[1]] != s:
         u = pre[v[0]][v[1]]
+        path.append(u)
         map[u[0]][u[1]] = 4
         v = u
         
-    return map
+    return map, searched, path[::-1]

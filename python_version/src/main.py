@@ -1,6 +1,7 @@
 # build-in libs
 import numpy as np
 import random
+import time
 
 # private import
 import bfs
@@ -30,18 +31,11 @@ if __name__  == "__main__":
     s = (random.randint(6,43), random.randint(6,43))
     t = (random.randint(6,43), random.randint(6,43))
     map[s[0]][s[1]] = 1
-    map[t[0]][t[1]] = 2
+    map[t[0]][t[1]] = 2  
 
     map_1 = np.array(map)
-    map_2 = np.array(map)
+    map_2 = np.array(map)      
     map_3 = np.array(map)
 
-    map_1 = dfs.dfs(map_1,s,t)
-    map_2 = bfs.bfs(map_2,s,t)
-    map_3 = A_star.A_star(map_3,s,t)
-
-    visualization.save_map(map_1,r'python_version\res\dfs_res.pdf')
-    visualization.save_map(map_2,r'python_version\res\bfs_res.pdf')
-    visualization.save_map(map_3,r'python_version\res\A_star.pdf')
-    
-
+    map_1, searched, path = A_star.A_star(map_1, s, t)
+    visualization.animation_show(map,searched,path)
