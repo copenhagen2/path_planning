@@ -5,11 +5,11 @@ import matplotlib.animation as mla
 import queue
 import random
 
-def bfs(map:np.array,s:tuple,t:tuple):
+def bfs(map:np.array,s:tuple,t:tuple,N):
     que = queue.Queue() # the que to store the vertices
     que.put(s)
-    pre = [[(-1,-1) for i in range(50)] for i in range(50)]
-    visited = [[False for i in range(50)] for i in range(50)]
+    pre = [[(-1,-1) for i in range(N)] for i in range(N)]
+    visited = [[False for i in range(N)] for i in range(N)]
     visited[s[0]][s[1]] = True
 
     # return value

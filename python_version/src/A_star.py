@@ -6,15 +6,15 @@ def Manhanttan_distance(u:tuple, v:tuple):
     y = np.abs(u[1]-v[1])
     return x + y
 
-def A_star(map:np.array, s:tuple, t:tuple):
+def A_star(map:np.array, s:tuple, t:tuple, N):
     q = queue.PriorityQueue()
     q.put((Manhanttan_distance(s,t),s))
-    g = [[np.inf for i in range(50)] for i in range(50)]
+    g = [[np.inf for i in range(N)] for i in range(N)]
     g[s[0]][s[1]] = 0
-    f = [[np.inf for i in range(50)] for i in range(50)]
+    f = [[np.inf for i in range(N)] for i in range(N)]
     f[s[0]][s[1]] = Manhanttan_distance(s,t)
-    pre = [[(-1,-1) for i in range(50)] for i in range(50)]
-    visited = [[False for i in range(50)] for i in range(50)]
+    pre = [[(-1,-1) for i in range(N)] for i in range(N)]
+    visited = [[False for i in range(N)] for i in range(N)]
 
     # return value
     searched = []

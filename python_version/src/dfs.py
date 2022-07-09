@@ -1,9 +1,9 @@
 import numpy as np
 
-def dfs(map:np.array,s:tuple,t:tuple):
+def dfs(map:np.array,s:tuple,t:tuple,N):
     stack = [s] # the stack to store the vertices
-    pre = [[(-1,-1) for i in range(50)] for i in range(50)]
-    visited = [[False for i in range(50)] for i in range(50)]
+    pre = [[(-1,-1) for i in range(N)] for i in range(N)]
+    visited = [[False for i in range(N)] for i in range(N)]
     visited[s[0]][s[1]] = True
 
     # return value
