@@ -43,7 +43,6 @@ def animation_save(map, search, path, f):
     color_norm = mlc.Normalize(vmin=0,vmax=5)
     n = len(search)
     m = len(path)
-    plt.axis("equal")
     maze = ax.pcolormesh(map,edgecolors='white',linewidths=1,cmap=color_map,norm=color_norm)
     ax.set_aspect(1)
     def update(frame):
