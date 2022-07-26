@@ -4,6 +4,7 @@ import matplotlib.colors as mlc
 import matplotlib.animation as mla
 import queue
 import random
+import time
 
 def bfs(map:np.array,s:tuple,t:tuple,N):
     que = queue.Queue() # the que to store the vertices
@@ -15,6 +16,8 @@ def bfs(map:np.array,s:tuple,t:tuple,N):
     # return value
     searched = []
     path = []
+
+    t_start = time.time()
 
     while not que.empty():
         v = que.get()
@@ -73,6 +76,7 @@ def bfs(map:np.array,s:tuple,t:tuple,N):
             pre[u_x][u_y] = v
             break
     
+    t_end = time.time()
 
     # recovery the path
     v = t
@@ -82,7 +86,7 @@ def bfs(map:np.array,s:tuple,t:tuple,N):
         map[u[0]][u[1]] = 4
         v = u
     
-    return map, searched, path[::-1]
+    return map, searched, path[::-1], t_end - t_start
 
 
 

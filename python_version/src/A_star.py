@@ -1,5 +1,6 @@
 import numpy as np
 import queue
+import time
 
 def Manhanttan_distance(u:tuple, v:tuple):
     x = np.abs(u[0]-v[0])
@@ -19,6 +20,8 @@ def A_star(map:np.array, s:tuple, t:tuple, N):
     # return value
     searched = []
     path = []
+
+    t_start = time.time()
 
     while not q.empty():
         cost, v = q.get()
@@ -93,6 +96,8 @@ def A_star(map:np.array, s:tuple, t:tuple, N):
                 pre[x_u][y_u] = v
                 q.put((f[x_u][y_u],u))
     
+    t_end = time.time()
+
     v = t
     while pre[v[0]][v[1]] != s:
         u = pre[v[0]][v[1]]
@@ -100,4 +105,4 @@ def A_star(map:np.array, s:tuple, t:tuple, N):
         map[u[0]][u[1]] = 4
         v = u
         
-    return map, searched, path[::-1]
+    return map, searched, path[::-1], t_end - t_start

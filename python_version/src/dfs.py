@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 def dfs(map:np.array,s:tuple,t:tuple,N):
     stack = [s] # the stack to store the vertices
@@ -9,6 +10,8 @@ def dfs(map:np.array,s:tuple,t:tuple,N):
     # return value
     searched = []
     path = []
+
+    t_start = time.time()
 
     while stack:
         v = stack.pop()
@@ -67,6 +70,7 @@ def dfs(map:np.array,s:tuple,t:tuple,N):
             pre[u_x][u_y] = v
             break
     
+    t_end =time.time()
 
     # recovery the path
     v = t
@@ -76,5 +80,5 @@ def dfs(map:np.array,s:tuple,t:tuple,N):
         map[u[0]][u[1]] = 4
         v = u
     
-    return map, searched, path[::-1]
+    return map, searched, path[::-1], t_end-t_start
 
