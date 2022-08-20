@@ -55,4 +55,3 @@ if __name__  == "__main__":
     m, searched, path, cost = dfs.dfs(map_3, s, t, N)
     print(f"dfs: {cost}")
     visualization.animation_save(map_copy_3,searched,path,r'G:\Summer Lab\path_planning\python_version\res\dfs.gif')
-    
